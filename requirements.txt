@@ -1,0 +1,8 @@
+whisperx>=3.3.4
+pandas
+nltk
+transformers
+peft
+trl
+datasets
+torch

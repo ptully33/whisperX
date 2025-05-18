@@ -296,3 +296,20 @@ If you use this in your research, please cite the paper:
   year={2023}
 }
 ```
+
+## Coaching Pipeline Example
+
+Helper scripts are available under `coaching_pipeline/` to demonstrate a minimal
+workflow for preparing retrieval‑augmented knowledge and LoRA training data.
+
+1. **Transcription** – batch transcribe folders of audio or video with
+   WhisperX. Each file produces a full transcript, a list of flagged sentences
+   when word confidence falls below 0.85 and word‑level timestamp JSON/SRT.
+2. **RAG Preparation** – split transcripts into ~500‑token chunks with YAML
+   headers and generate a `manifest.json` for indexing.
+3. **LoRA Preparation** – extract instruction/response pairs from diarized
+   transcripts and store them in `train.jsonl`.
+4. **LoRA Training** – run a small PEFT + TRL fine‑tuning loop to create LoRA
+   adapter weights for a base language model.
+
+Each script provides its own CLI. See the code for usage details.
